@@ -25,6 +25,7 @@ module CardShuffler
 
     config.generators.assets = false
     config.generators.helpers = false
+    config.generators.views = false
 
     config.generators do |g|
       g.test_framework :rspec,
