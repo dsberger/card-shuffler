@@ -5,3 +5,4 @@ asset 'bootstrap-sass-official'
 asset 'jquery'
 
 asset 'angular'
+asset 'angular-ui-router'

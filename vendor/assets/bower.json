@@ -3,6 +3,7 @@
   "dependencies": {
     "bootstrap-sass-official": "latest",
     "jquery": "latest",
-    "angular": "latest"
+    "angular": "latest",
+    "angular-ui-router": "latest"
   }
 }
