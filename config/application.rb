@@ -23,11 +23,10 @@ module CardShuffler
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
 
-    config.generators.assets = false
-    config.generators.helpers = false
-    config.generators.views = false
-
     config.generators do |g|
+      g.helper false
+      g.assets false
+      g.view false
       g.test_framework :rspec,
         fixtures: false,
         view_specs: false,
