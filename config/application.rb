@@ -35,5 +35,8 @@ module CardShuffler
         controller_specs: true,
         request_specs: false
     end
+
+    config.assets.paths << 
+      Rails.root.join("vendor","assets","bower_components")
   end
 end
