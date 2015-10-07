@@ -12,14 +12,23 @@ Card.destroy_all
 
 board = Board.create(name: "The Only Board")
 
-list_a = List.create(name: "A", board: board, order_on_board: 1)
-list_b = List.create(name: "B", board: board, order_on_board: 2)
-list_c = List.create(name: "C", board: board, order_on_board: 3)
-list_d = List.create(name: "D", board: board, order_on_board: 4)
-
 letters = ("A".."Z").to_a
 colors = ["FF0000", "FFD600", "4010C5", "00DA00"]
-lists = [list_a, list_b, list_c, list_d]
+
+lists = []
+
+4.times do |n|
+  l = List.new
+
+  l.name = letters[n]
+  l.color = colors[n]
+
+  l.board = board
+  l.order_on_board = n + 1
+
+  l.save
+  lists << l
+end
 
 26.times do |n|
   c = Card.new

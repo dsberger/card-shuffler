@@ -3,13 +3,19 @@ require 'rails_helper'
 describe List do
 
   it "must have a board" do
-    list = List.new({name: "Test", board_id:nil})
+    list = List.new({name: "Test", board_id:nil, color:"000000"})
     expect(list).not_to be_valid
   end
 
   it "must have a name" do
     board = Board.create(name: "Test")
-    list = List.new({name: "", board_id: board.id})
+    list = List.new({name: "", board_id: board.id, color:"000000"})
+    expect(list).not_to be_valid
+  end
+
+  it "must have a color" do
+    board = Board.create(name: "Test")
+    list = List.new({name: "Test", board_id: board.id, color:nil})
     expect(list).not_to be_valid
   end
 
