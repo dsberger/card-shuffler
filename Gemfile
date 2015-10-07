@@ -9,6 +9,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
 gem 'bower-rails'
+gem 'angular_rails_csrf'
 
 
 group :development, :test do
