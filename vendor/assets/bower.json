@@ -2,6 +2,7 @@
   "name": "dsl-generated dependencies",
   "dependencies": {
     "bootstrap": "latest",
+    "jquery": "latest",
     "angular": "latest"
   }
 }
