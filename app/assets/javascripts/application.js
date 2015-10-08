@@ -15,5 +15,7 @@
 //
 //= require angular
 //= require angular-ui-router
+//= require lodash
+//= require restangular
 //
 //= require_tree .

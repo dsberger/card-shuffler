@@ -4,6 +4,7 @@
     "bootstrap-sass-official": "latest",
     "jquery": "latest",
     "angular": "latest",
-    "angular-ui-router": "latest"
+    "angular-ui-router": "latest",
+    "restangular": "latest"
   }
 }
