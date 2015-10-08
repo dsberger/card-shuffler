@@ -7,7 +7,7 @@ cardShuffler.controller('ListsIndexCtrl',
 
         ListsAPI.index()
           .then( function( listsResponse ){
-            lists.push.apply( lists, listsResponse );
+            $scope.lists.push.apply( $scope.lists, listsResponse );
           });
 
 
