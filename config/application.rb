@@ -28,12 +28,13 @@ module CardShuffler
       g.assets false
       g.view false
       g.test_framework :rspec,
-        fixtures: false,
+        fixtures: true,
         view_specs: false,
         helper_specs: false,
         routing_specs: false,
         controller_specs: true,
         request_specs: false
+      g.fixture_replacement :factory_girl, suffix: 'factory'
     end
 
     config.assets.paths << 
