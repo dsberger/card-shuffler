@@ -15,7 +15,10 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'guard-rspec'
   gem 'factory_girl_rails'
-  gem 'database_cleaner'
+end
+
+group :test do
+  gem "database_cleaner", "~> 1.3.0"
 end
 
 group :development do

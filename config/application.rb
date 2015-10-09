@@ -34,10 +34,10 @@ module CardShuffler
         routing_specs: false,
         controller_specs: true,
         request_specs: false
-      g.fixture_replacement :factory_girl, suffix: 'factory'
+      g.fixture_replacement :factory_girl, dir: 'spec/factories'
     end
 
-    config.assets.paths << 
+    config.assets.paths <<
       Rails.root.join("vendor","assets","bower_components")
   end
 end
