@@ -13,7 +13,7 @@ Card.destroy_all
 board = Board.create(name: "The Only Board")
 
 letters = ("A".."Z").to_a
-colors = ["FF0000", "FFD600", "4010C5", "00DA00"]
+colors = ["FF0000", "FFD600", "00DA00", "4010C5"]
 
 lists = []
 

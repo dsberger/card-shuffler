@@ -2,6 +2,11 @@
 
 <div class="row">
   <div class="col-md-3" ng-repeat="list in lists">
-    {{ list }}
+    <div class="list" style="background-color:#{{ list.color }}">
+      <h3>List {{ list.name }}</h3>
+      <p>front-end position: {{ list.frontEndPosition }}</p>
+      <p>back-end position: {{ list.order_on_board }}</p>
+      <hr />
+    </div>
   </div>
 </div>
