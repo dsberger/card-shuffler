@@ -2,13 +2,18 @@ require 'rails_helper'
 
 describe Board do
 
+  it "has a valid factory" do
+    board = build(:board)
+    expect(board).to be_valid
+  end
+
   it "must have a name" do
-    board = Board.new(name: nil)
+    board = build(:board, name: nil)
     expect(board).not_to be_valid
   end
 
   it "has associated lists" do
-    board = Board.new(name: "Test")
+    board = create(:board)
     expect(board).to respond_to :lists
   end
 
