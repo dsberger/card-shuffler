@@ -1,26 +1,29 @@
 require 'rails_helper'
 
 describe Card do
-  let(:board){ Board.create(name:"TestBoard")}
-  let(:list){ List.create({name:"TestList", board_id: board.id})}
+
+  it "has a valid factory" do
+    card = build(:card)
+    expect(card).to be_valid
+  end
 
   it "must have a name" do
-    card = Card.new(name:" ", list_id: list.id, color:"000000")
+    card = build(:card, name: nil)
     expect(card).not_to be_valid
   end
 
   it "must have a list" do
-    card = Card.new(name:"Test", list_id:nil, color:"000000")
+    card = build(:card, list: nil)
     expect(card).not_to be_valid
   end
 
   it "must have a color" do
-    card = Card.new(name:"Test", list_id: list.id, color:nil)
+    card = build(:card, color: nil)
     expect(card).not_to be_valid
   end
 
   it "has an associated list" do
-    card = Card.create(name:"Test", list_id: list.id, color:"000000")
+    card = build(:card)
     expect(card).to respond_to :list
   end
 end
