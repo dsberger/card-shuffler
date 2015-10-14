@@ -1,7 +1,8 @@
 var cardShuffler = angular.module(
     'cardShuffler',
     [ 'ui.router',
-      'restangular' ]);
+      'restangular',
+      'ngDraggable' ]);
 
 cardShuffler.config(
     ['$stateProvider', '$urlRouterProvider',
