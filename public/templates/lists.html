@@ -3,16 +3,20 @@
 <div class="row" >
   <div class="col-md-3" ng-repeat="list in lists" ng-drop="true" ng-drop-success="onDropComplete($index, $data, $event)">
 
-    <div class="list" style="background-color:#{{ list.color }}" ng-drag="true" ng-drag-data="list">
-      <h3>List {{ list.name }}</h3>
-      <p>front-end position: {{ lists.indexOf(list) + 1; }}</p>
-      <p>back-end position: {{ list.order_on_board }}</p>
-      <hr />
+    <div class="list" style="border-color:#{{ list.color }}; background-color:#{{ list.color }}" ng-drag="true" ng-drag-data="list">
+      <div class="list-header">
+        <h3>List {{ list.name }}</h3>
+        <p>front-end position: {{ lists.indexOf(list) + 1; }}</p>
+        <p>back-end position: {{ list.order_on_board }}</p>
+      </div>
 
-      <div class="card" ng-repeat="card in list.cards">
-        <h4>Card {{ card.name }}</h4>
-        <p>front-end position: {{ list.name }}{{ list.cards.indexOf(card) + 1; }}</p>
-        <p>back-end postiion: {{ card.order_on_list }}</p>
+      <div class="card-repository">
+
+        <div class="card" style="background-color:#{{ card.color }}" ng-repeat="card in list.cards">
+          <h4>Card {{ card.name }}</h4>
+          <p>front-end position: {{ list.name }}{{ list.cards.indexOf(card) + 1; }}</p>
+          <p>back-end postiion: {{ card.order_on_list }}</p>
+        </div>
       </div>
     </div>
 
