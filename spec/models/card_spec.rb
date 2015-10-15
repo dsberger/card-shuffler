@@ -26,4 +26,9 @@ describe Card do
     card = build(:card)
     expect(card).to respond_to :list
   end
+
+  it "can tell you its position" do
+    card = build(:card)
+    expect(card.position).to eq card.list.name + card.order_on_list.to_s 
+  end
 end

@@ -7,6 +7,7 @@ json.array! @lists do |list|
     json.id card.id
     json.name card.name
     json.order_on_list card.order_on_list
+    json.position card.position
     json.color card.color
   end
 end
