@@ -8,6 +8,12 @@
       <p>front-end position: {{ lists.indexOf(list) + 1; }}</p>
       <p>back-end position: {{ list.order_on_board }}</p>
       <hr />
+
+      <div class="card" ng-repeat="card in list.cards">
+        <h4>Card {{ card.name }}</h4>
+        <p>front-end position: {{ list.name }}{{ list.cards.indexOf(card) + 1; }}</p>
+        <p>back-end postiion: {{ card.order_on_list }}</p>
+      </div>
     </div>
 
   </div>

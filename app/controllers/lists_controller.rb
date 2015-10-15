@@ -1,7 +1,7 @@
 class ListsController < ApplicationController
 
   def index
-    render json: List.all
+    @lists = List.all
   end
 
 end
