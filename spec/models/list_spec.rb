@@ -34,4 +34,119 @@ describe List do
       expect(list).to respond_to :cards
     end
   end
+
+  describe ".move" do
+    
+    context "to an adjacent location" do
+
+      before do
+        4.times do |n|
+          create(:list, name:"list#{n+1}", order_on_board: n+1)
+        end
+      end
+
+      context "moving up" do
+        before do
+          List.move(2,3)
+        end
+
+        it "gives the moving list the correct order" do
+          expect(List.find_by_name("list2").order_on_board).to eq 3
+        end
+
+        it "gives the displaced list the correct order" do
+          expect(List.find_by_name("list3").order_on_board).to eq 2
+        end
+
+        it "leaves the earlier list undisturbed" do
+          expect(List.find_by_name("list1").order_on_board).to eq 1
+        end
+
+        it "leaves the later list undisturbed" do
+          expect(List.find_by_name("list4").order_on_board).to eq 4
+        end
+      end
+
+      context "moving down" do
+
+        before do
+          List.move(3,2)
+        end
+
+        it "gives the moving list the correct order" do
+          expect(List.find_by_name("list2").order_on_board).to eq 3
+        end
+
+        it "gives the displaced list the correct order" do
+          expect(List.find_by_name("list3").order_on_board).to eq 2
+        end
+
+        it "leaves the earlier list undisturbed" do
+          expect(List.find_by_name("list1").order_on_board).to eq 1
+        end
+
+        it "leaves the later list undisturbed" do
+          expect(List.find_by_name("list4").order_on_board).to eq 4
+        end
+      end
+    end
+
+    context "to a non-adjacent location" do
+
+      before do
+        6.times do |n|
+          create(:list, name:"list#{n+1}", order_on_board: n+1)
+        end
+      end
+
+      context "moving up" do
+
+        before do
+          List.move(5,2)
+        end
+
+        it "gives the moving list the correct order" do
+          expect(List.find_by_name("list5").order_on_board).to eq 2
+        end
+
+        it "iterates the order of the displaced lists down by one" do
+          expect(List.find_by_name("list2").order_on_board).to eq 3
+          expect(List.find_by_name("list3").order_on_board).to eq 4
+          expect(List.find_by_name("list4").order_on_board).to eq 5
+        end
+
+        it "leaves the earlier list undisturbed" do
+          expect(List.find_by_name("list1").order_on_board).to eq 1
+        end
+
+        it "leaves the later list undisturbed" do
+          expect(List.find_by_name("list6").order_on_board).to eq 6
+        end
+      end
+
+      context "moving down" do
+
+        before do
+          List.move(2,5)
+        end
+
+        it "gives the moving list the correct order" do
+          expect(List.find_by_name("list2").order_on_board).to eq 5
+        end
+        it "iterates the order of the displaced lists up by one"  do
+          expect(List.find_by_name("list3").order_on_board).to eq 2
+          expect(List.find_by_name("list4").order_on_board).to eq 3
+          expect(List.find_by_name("list5").order_on_board).to eq 4
+        end
+
+        it "leaves the earlier list undisturbed" do
+          expect(List.find_by_name("list1").order_on_board).to eq 1
+        end
+        it "leaves the later list undisturbed" do
+          expect(List.find_by_name("list6").order_on_board).to eq 6
+        end
+      end
+    end
+
+  end
 end

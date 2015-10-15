@@ -1,0 +1,2 @@
+class ListOrderController < ApplicationController
+end
