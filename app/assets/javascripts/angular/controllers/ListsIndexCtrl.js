@@ -5,12 +5,25 @@ cardShuffler.controller('ListsIndexCtrl',
 
         $scope.lists = [];
 
-        var createFrontEndPosition = function( lists ){
-          lists.forEach( function(list) {
-            if( !list.frontEndPosition ){
-              list.frontEndPosition = list.order_on_board;
-            }
-          });
+        $scope.onDropComplete = function( moveTo, list ){
+          rearrangeList( moveTo, list );
+        };
+
+        var rearrangeList = function( moveTo, list ){
+          var moveFrom = $scope.lists.indexOf( list ); 
+          var i = moveFrom;
+
+          if ( moveFrom > moveTo ) {
+            for ( i; i > moveTo; i-- ){
+              $scope.lists[i] = $scope.lists[i-1];
+            };
+          } else {
+            for ( i; i < moveTo; i++){
+              $scope.lists[i] = $scope.lists[i+1];
+            };
+          }
+
+          $scope.lists[i] = list;
         };
 
         ListsAPI.index()
@@ -19,7 +32,6 @@ cardShuffler.controller('ListsIndexCtrl',
             $scope.lists.sort(function(a,b){
               return parseInt(a.order_on_board) - parseInt(b.order_on_board)
             });
-            createFrontEndPosition( $scope.lists )
           });
 
       }]);

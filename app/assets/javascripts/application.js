@@ -17,5 +17,6 @@
 //= require angular-ui-router
 //= require lodash
 //= require restangular
+//= require ngDraggable
 //
 //= require_tree .
