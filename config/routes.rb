@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   scope :api do
     scope :v1 do
       resources :lists, only: [:index]
+      resources :list_order, only: [:update]
     end
   end
 

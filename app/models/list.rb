@@ -4,17 +4,14 @@ class List < ActiveRecord::Base
 
   validates :board_id, :name, :color, presence: true
 
-  def self.move(from, to)
-    moving = List.find_by_order_on_board(from)
+  def self.move(list_id, to)
+    moving_list = List.find list_id
+    from = moving_list.order_on_board
 
-    if from > to
-      moveDown(from, to)
-    else
-      moveUp(from, to)
-    end
+    from > to ? moveDown(from, to) : moveUp(from, to)
 
-    moving.order_on_board = to
-    moving.save
+    moving_list.order_on_board = to
+    moving_list.save
   end
 
   private

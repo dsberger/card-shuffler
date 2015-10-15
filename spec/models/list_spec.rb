@@ -47,7 +47,8 @@ describe List do
 
       context "moving up" do
         before do
-          List.move(2,3)
+          id = List.find_by_name("list2").id
+          List.move(id,3)
         end
 
         it "gives the moving list the correct order" do
@@ -70,7 +71,8 @@ describe List do
       context "moving down" do
 
         before do
-          List.move(3,2)
+          id = List.find_by_name("list3").id
+          List.move(id,2)
         end
 
         it "gives the moving list the correct order" do
@@ -102,7 +104,8 @@ describe List do
       context "moving up" do
 
         before do
-          List.move(5,2)
+          id = List.find_by_name("list5").id
+          List.move(id,2)
         end
 
         it "gives the moving list the correct order" do
@@ -127,7 +130,8 @@ describe List do
       context "moving down" do
 
         before do
-          List.move(2,5)
+          id = List.find_by_name("list2").id
+          List.move(id,5)
         end
 
         it "gives the moving list the correct order" do
