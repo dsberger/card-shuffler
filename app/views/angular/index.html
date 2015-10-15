@@ -3,6 +3,18 @@
     <h1>Card Shuffler</h1>
     <h3>by Dan Berger</h3>
     <hr />
+    <p>This is a demo app to show drag-and-drop functionality using a combination of Ruby on Rails and Angular.js.</p>
+
+    <p>The code can be <a href="#">found here on Github.</a></p>
+
+    <p>Each list and card displays a 'front-end position' and a 'back-end position'.</p>
+
+    <p>The front-end position is calculated dynamically by Angular with reference to array indices and object names.</p>
+
+    <p>The back-end position is an attribute of the model in the Rails database.</p>
+
+    <p>When you move a list or card, you may notice a lag while the positions are out of sync.</p>
+    <p>The back-end postion is updated with a success callback after the AJAX request is done running.</p>
   </div>
 
   <div id="board-space" class="col-md-9">
