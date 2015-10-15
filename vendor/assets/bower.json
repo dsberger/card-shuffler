@@ -5,7 +5,6 @@
     "jquery": "latest",
     "angular": "latest",
     "angular-ui-router": "latest",
-    "restangular": "latest",
-    "ngDraggable": "latest"
+    "restangular": "latest"
   }
 }
