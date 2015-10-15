@@ -1,7 +1,7 @@
 <!-- inside Bootstrap col-md-9 -->
 
 <div class="row" >
-  <div class="col-md-3" ng-repeat="list in lists" ng-drop="true" ng-drop-success="onDropComplete($index, $data, $event)">
+  <div class="col-md-3" ng-repeat="list in lists" ng-drop="true" ng-drag-data="list" ng-drop-success="onListDropComplete($index, $data)">
 
     <div class="list" style="border-color:#{{ list.color }}; background-color:#{{ list.color }}" ng-drag="true" ng-drag-data="list">
       <div class="list-header">
@@ -10,12 +10,11 @@
         <p>back-end position: {{ list.order_on_board }}</p>
       </div>
 
-      <div class="card-repository">
-
-        <div class="card" style="background-color:#{{ card.color }}" ng-repeat="card in list.cards">
+      <div class="card-repository" ng-drop="true" ng-drag-data="card">
+        <div class="card" style="background-color:#{{ card.color }}" ng-repeat="card in list.cards" ng-drag="true" ng-drag-data="card">
           <h4>Card {{ card.name }}</h4>
           <p>front-end position: {{ list.name }}{{ list.cards.indexOf(card) + 1; }}</p>
-          <p>back-end postiion: {{ card.position }}</p>
+          <p>back-end position: {{ card.position }}</p>
         </div>
       </div>
     </div>

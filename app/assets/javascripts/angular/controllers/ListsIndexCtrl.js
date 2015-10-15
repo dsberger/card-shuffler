@@ -6,7 +6,7 @@ cardShuffler.controller('ListsIndexCtrl',
 
         $scope.lists = [];
 
-        $scope.onDropComplete = function( moveTo, list ){
+        $scope.onListDropComplete = function( moveTo, list ){
           rearrangeList( moveTo, list );
           ListOrderAPI.update( list.id, moveTo + 1 )
             .then( function(response){
