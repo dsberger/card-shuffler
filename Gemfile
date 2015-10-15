@@ -1,7 +1,6 @@
 source 'https://rubygems.org'
 
 gem 'rails', '4.2.4'
-gem 'sqlite3'
 
 # Front End
 gem 'sass-rails', '~> 5.0'
@@ -12,6 +11,7 @@ gem 'angular_rails_csrf'
 
 
 group :development, :test do
+  gem 'sqlite3'
   gem 'rspec-rails'
   gem 'guard-rspec'
   gem 'factory_girl_rails'
