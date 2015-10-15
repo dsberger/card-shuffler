@@ -27,6 +27,8 @@ cardShuffler.config(
 
 
 // Error handler
-cardShuffler.run(function($rootScope){
+cardShuffler.run(
+    ['$rootScope',
+    function($rootScope){
   $rootScope.$on("$stateChangeError", console.log.bind(console));
-})
+}]);
