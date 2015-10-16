@@ -39,11 +39,7 @@ describe List do
     
     context "to an adjacent location" do
 
-      before do
-        4.times do |n|
-          create(:list, name:"list#{n+1}", order_on_board: n+1)
-        end
-      end
+      before { set_up_lists(4) }
 
       context "moving up" do
         before do
@@ -95,11 +91,7 @@ describe List do
 
     context "to a non-adjacent location" do
 
-      before do
-        6.times do |n|
-          create(:list, name:"list#{n+1}", order_on_board: n+1)
-        end
-      end
+      before { set_up_lists 6 }
 
       context "moving up" do
 

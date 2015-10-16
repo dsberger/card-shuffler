@@ -2,7 +2,8 @@ cardShuffler.controller('ListsIndexCtrl',
     [ '$scope',
       'ListsAPI',
       'ListOrderAPI',
-      function( $scope, ListsAPI, ListOrderAPI ){
+      'CardOrderAPI',
+      function( $scope, ListsAPI, ListOrderAPI, CardOrderAPI ){
 
         $scope.lists = [];
 
@@ -15,14 +16,29 @@ cardShuffler.controller('ListsIndexCtrl',
                 $scope.lists.sort(function(a,b){
                   return parseInt(a.order_on_board) - parseInt(b.order_on_board)
                 });
+                $scope.lists.forEach( function( list ){
+                  list.cards.sort(function(a,b){
+                    return parseInt(a.order_on_list) - parseInt(b.order_on_list);
+                  });
+                });
               });
           };
         };
 
         $scope.onCardDropComplete = function( moveToList, moveToCard, object ){
           if ( object.type === "card" ) {
-            console.log( "Moving to list " + moveToList + " and card " + moveToCard );
-            console.log( object );
+            CardOrderAPI.update( object.id, moveToList + 1, moveToCard + 1 )
+              .then( function(response){
+                $scope.lists = response;
+                $scope.lists.sort(function(a,b){
+                  return parseInt(a.order_on_board) - parseInt(b.order_on_board)
+                });
+                $scope.lists.forEach( function( list ){
+                  list.cards.sort(function(a,b){
+                    return parseInt(a.order_on_list) - parseInt(b.order_on_list);
+                  });
+                });
+              });
           };
         };
 
@@ -48,6 +64,11 @@ cardShuffler.controller('ListsIndexCtrl',
             $scope.lists.push.apply( $scope.lists, listsResponse );
             $scope.lists.sort(function(a,b){
               return parseInt(a.order_on_board) - parseInt(b.order_on_board)
+            });
+            $scope.lists.forEach( function( list ){
+              list.cards.sort(function(a,b){
+                return parseInt(a.order_on_list) - parseInt(b.order_on_list);
+              });
             });
           });
 
