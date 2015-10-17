@@ -19,7 +19,8 @@ class Card < ActiveRecord::Base
       Card.move_within_list(
         moving_card,
         new_list,
-        to_card )
+        to_card
+      )
 
     else
 
