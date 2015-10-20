@@ -17,6 +17,7 @@ group :development, :test do
   gem 'guard-rspec'
   gem 'factory_girl_rails'
   gem 'jasmine-rails'
+  gem 'guard-jasmine'
 end
 
 group :test do
