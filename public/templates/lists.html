@@ -22,7 +22,9 @@
           ng-repeat="card in list.cards"
           ng-drop="true"
           ng-drop-success="onCardDropComplete($parent.$index, $index, $data)"
-          ng-drag="true" ng-drag-data="card">
+          ng-drag="true"
+          ng-drag-start="saveCardAndListIndex($index, $parent.$index)"
+          ng-drag-data="card">
 
           <h4>Card {{ card.name }}</h4>
           <p>front-end position: {{ list.name }}{{ list.cards.indexOf(card) + 1; }}</p>

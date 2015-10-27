@@ -43,6 +43,18 @@ cardShuffler.controller('ListsIndexCtrl',
           };
         };
 
+        $scope.saveCardAndListIndex = function( cardIndex, listIndex ){
+
+          if ($scope.originatingCard === undefined ){
+            $scope.originatingCard = cardIndex;
+          };
+
+          if ($scope.originatingList === undefined ){
+            $scope.originatingList = listIndex;
+          };
+
+        };
+
         function rearrangeLists( moveTo, list ) {
           var moveFrom = $scope.lists.indexOf( list );
           $scope.lists[moveFrom] = null;
@@ -73,12 +85,34 @@ cardShuffler.controller('ListsIndexCtrl',
             $scope.lists[i] = movingList;
           };
         };
-
-        function rearrangeCards( moveToList, moveToCard, card ){
-          console.log( "target list: " + moveToList );
-          console.log( "target card: " + moveToCard );
-          console.log( card );
+        
+        function retrieveOriginatingList(){
+          var list = $scope.originatingList;
+          $scope.originatingList = undefined;
+          return list;
         };
+
+        function retrieveOriginatingCard(){
+          var card = $scope.originatingCard;
+          $scope.originatingCard = undefined;
+          return card;
+        };
+
+        function rearrangeCards( newListIndex, newCardIndex ){
+          var oldList = retrieveOriginatingList();
+          var oldCard = retrieveOriginatingCard();
+          var card = pullCardAt( oldList, oldCard );
+          insertCardTo( newListIndex, newCardIndex, card );
+        };
+
+        function pullCardAt( listIndex, cardIndex ) {
+          return $scope.lists[ listIndex ].cards.splice( cardIndex, 1 )[0];
+        };
+
+        function insertCardTo( listIndex, cardIndex, card) {
+          $scope.lists[ listIndex ].cards.splice( cardIndex, 0, card );
+        };
+
 
         ListsAPI.index()
           .then( function( listsResponse ){
