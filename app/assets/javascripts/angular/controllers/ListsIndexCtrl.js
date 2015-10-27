@@ -9,7 +9,7 @@ cardShuffler.controller('ListsIndexCtrl',
 
         $scope.onListDropComplete = function( moveToList, object ){
           if (object.type === "list") {
-            rearrangeList( moveToList, object );
+            rearrangeLists( moveToList, object );
             ListOrderAPI.update( object.id, moveToList + 1 )
               .then( function(response){
                 $scope.lists = response;
@@ -43,7 +43,7 @@ cardShuffler.controller('ListsIndexCtrl',
           };
         };
 
-        var rearrangeList = function( moveTo, list ){
+        function rearrangeLists( moveTo, list ) {
           var moveFrom = $scope.lists.indexOf( list );
           $scope.lists[moveFrom] = null;
 
