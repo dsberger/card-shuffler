@@ -7,7 +7,9 @@
 
     <div class="list"
       style="border-color:#{{ list.color }}; background-color:#{{ list.color }}"
-      ng-drag="true" ng-drag-data="list">
+      ng-drag="true"
+      ng-drag-start="saveListIndex( $index )"
+      ng-drag-data="list">
 
       <div class="list-header" ng-drag-handle>
         <h3>List {{ list.name }}</h3>
